@@ -15,3 +15,4 @@ MonoBehaviour:
   interactable: 1
   hasWearAndTear: 1
   critRate: 0
+  healthOverTime: 0

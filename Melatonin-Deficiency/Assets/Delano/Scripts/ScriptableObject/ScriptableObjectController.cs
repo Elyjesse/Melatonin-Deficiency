@@ -7,6 +7,4 @@ public class ScriptableObjectController : ScriptableObject
 
     public bool interactable;
     public bool hasWearAndTear;
-
-    public float critRate;
 }
