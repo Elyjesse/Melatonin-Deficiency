@@ -11,8 +11,8 @@ public class BaseMovement : MonoBehaviour
     public float ver;
 
     //cam
-    public float minX = -60f;
-    public float maxX = 60f;
+    public float minX = -40f;
+    public float maxX = 40f;
     public float camSpd;
     public float sensX;
     public float sensY;
