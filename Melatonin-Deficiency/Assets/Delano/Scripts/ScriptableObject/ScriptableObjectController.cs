@@ -7,4 +7,8 @@ public class ScriptableObjectController : ScriptableObject
 
     public bool interactable;
     public bool hasWearAndTear;
+    public bool usesStamina;
+
+    public float staminaCost;
+
 }
