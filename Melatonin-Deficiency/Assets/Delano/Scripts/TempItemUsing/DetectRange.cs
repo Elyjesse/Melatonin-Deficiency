@@ -13,8 +13,8 @@ public class DetectRange : MonoBehaviour
     public bool usesStamina;
 
     public float staminaCost;
-    public float durability;
-    public float damage;
+    public float durabilityOfItem;
+    public float damageDealing;
     public float rangeOfHeldItem;
 
 
@@ -24,6 +24,16 @@ public class DetectRange : MonoBehaviour
     public GameObject player;
     public GameObject other;
     public GameObject clippingPoint;
+
+    public Sword sword;
+
+    public void Start()
+    {
+        damageDealing = sword.damage;
+        breaksOverTime = sword.hasWearAndTear;
+        durabilityOfItem = sword.durability;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -36,7 +46,7 @@ public class DetectRange : MonoBehaviour
 
         if(equipped == false)
         {
-
+            
         }
 
         range = Vector3.Distance(player.transform.position, other.transform.position);

@@ -10,5 +10,5 @@ public class ScriptableObjectController : ScriptableObject
     public bool usesStamina;
 
     public float staminaCost;
-
+    public float durabilityLostOnUse;
 }
