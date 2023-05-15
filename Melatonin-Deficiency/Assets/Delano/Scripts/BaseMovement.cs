@@ -20,6 +20,7 @@ public class BaseMovement : MonoBehaviour
     public float rotY;
 
     public Camera cam;
+    public ItemsProperties prop;
 
 
     private void Start()
@@ -40,6 +41,14 @@ public class BaseMovement : MonoBehaviour
 
         transform.Translate(vec3 * moveSpd * Time.deltaTime);
 
+        if (hor == 0 && ver == 0)
+        {
+            prop.noInput = true;
+        }
+        else
+        {
+            prop.noInput = false;
+        }
 
         //cam movement below
         rotY += Input.GetAxis("Mouse X") * sensX;

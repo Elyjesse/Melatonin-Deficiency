@@ -10,6 +10,8 @@ public class ItemUse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if(props.emptyHand == true)
         {
             if (Input.GetKeyDown("e"))

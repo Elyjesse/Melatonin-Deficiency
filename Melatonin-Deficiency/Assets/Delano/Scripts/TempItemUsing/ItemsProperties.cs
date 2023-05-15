@@ -11,6 +11,8 @@ public class ItemsProperties : MonoBehaviour
     public GameObject Player;
     public GameObject clippingPoint;
 
+
+
     //short names consisting of first character of every word. example Health potion would be Hp;
     //UseDura == durability;
     //DuraCost == durabilityCost;
@@ -23,16 +25,18 @@ public class ItemsProperties : MonoBehaviour
     public bool lSusedura, dUseDura, hPuseDura, fUseDura;
     public bool lSuseStam, dUseStam, hPuseStam, fUseStam;
     public bool emptyHand;
+    public bool usingRn;
+    public bool noInput;
 
-    public int lsDuraCost, dDuraCost, hPduraCost, fDuraCost;
-    public int lSstamCost, dStamCost, hPstamCost, fStamCost;
-    public int lSdmgDealing, dDmgDealing, fDmgDealing;
-    public int hPheal;
-    public int lSdelayUse, dDelayUse, hPdelayUse, fDelayUse;
-    public int usesThisStamina, usesThisDmg, usesThisDura;
+    public float lsDuraCost, dDuraCost, hPduraCost, fDuraCost;
+    public float lSstamCost, dStamCost, hPstamCost, fStamCost;
+    public float lSdmgDealing, dDmgDealing, fDmgDealing;
+    public float hPheal;
+    public float lSdelayUse, dDelayUse, hPdelayUse, fDelayUse;
+    public float usesThisStamina, usesThisDmg, usesThisDura;
 
     //player part
-    public int currentPlayerStam, maxStam, currentHp, maxHP, currentItemSlots, maxItemSlots;
+    public float currentPlayerStam, maxStam, currentHp, maxHP, currentItemSlots, maxItemSlots;
 
     // Update is called once per frame
     void Update()
@@ -42,6 +46,7 @@ public class ItemsProperties : MonoBehaviour
             usesThisStamina = lSstamCost;
             usesThisDmg = lSdmgDealing;
             usesThisDura = lsDuraCost;
+            emptyHand = false;
         }
 
         if (dEquipped == true)
@@ -49,6 +54,7 @@ public class ItemsProperties : MonoBehaviour
             usesThisStamina = dStamCost;
             usesThisDmg = dDmgDealing;
             usesThisDura = dDuraCost;
+            emptyHand = false;
         }
 
 
@@ -57,6 +63,7 @@ public class ItemsProperties : MonoBehaviour
             usesThisStamina = hPstamCost;
             usesThisDmg = hPheal;
             usesThisDura = hPduraCost;
+            emptyHand = false;
         }
 
         if (fEquipped == true)
@@ -64,7 +71,10 @@ public class ItemsProperties : MonoBehaviour
             usesThisStamina = fStamCost;
             usesThisDmg = fDmgDealing;
             usesThisDura = fDuraCost;
+            emptyHand = false;
         }
+
+
     }
 
 
