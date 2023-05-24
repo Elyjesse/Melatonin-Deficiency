@@ -37,10 +37,14 @@ public class ItemsProperties : MonoBehaviour
 
     //player part
     public float currentPlayerStam, maxStam, currentHp, maxHP, currentItemSlots, maxItemSlots;
+    public bool equipped;
 
     // Update is called once per frame
     void Update()
     {
+
+        //er mag maar 1 item per keer in de hand zijn. maak ifstatement dat als en nieuw item wordt gebruikt, het oude item naar de inventory/offhand gedaan
+
         if(lSequipped == true)
         {
             usesThisStamina = lSstamCost;

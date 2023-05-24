@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class StamDrain : MonoBehaviour
 {
+    public ItemsProperties props;
 
-    public float dist;
-    public Vector3 playerDist;
+    public float use;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(props.equipped == true)
+        {
+            if(props.usingRn == true)
+            {
+                props.currentPlayerStam -= use * props.usesThisStamina;
+            }
+        }
     }
 }
 

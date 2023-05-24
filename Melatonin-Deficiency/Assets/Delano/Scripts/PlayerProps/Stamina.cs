@@ -37,7 +37,11 @@ public class Stamina : MonoBehaviour
         {
             rechargingRn1 = false;
             rechargingRn2 = true;
-            StartCoroutine(WaitingSyst2());
+        }
+
+        if(rechargingRn2 == true)
+        {
+            props.currentPlayerStam += Time.deltaTime * rechargeRate;
         }
         
         IEnumerator WaitingSyst()
@@ -58,26 +62,6 @@ public class Stamina : MonoBehaviour
                 }
             }
         }
-
-        IEnumerator WaitingSyst2()
-        {
-            yield return new WaitForSeconds(3f);
-
-            if (rechargingRn2 == true)
-            {
-                props.currentPlayerStam += Time.deltaTime * rechargeRate * 0.5f;
-                if (props.currentPlayerStam > props.maxStam)
-                {
-                    rechargeRate = 0f;
-                    props.currentPlayerStam = props.maxStam;
-                }
-                if (props.currentPlayerStam < props.maxStam)
-                {
-                    rechargeRate = 6f;
-                }
-            }
-        }
-
     }
 
 }
