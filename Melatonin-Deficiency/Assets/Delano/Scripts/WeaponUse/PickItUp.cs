@@ -23,8 +23,6 @@ public class PickItUp : MonoBehaviour
         {
             hitShit.collider.transform.position = clipp.transform.position;
         }
-        //idee. dischtsbijzijnde object wordt geregistreeert, als het binnen rangeOfPickup is, ui popup. daaran input = equipped. controleren welk ding en bijbehorende properties koppelen
-        //als properties zijn gekoppelt, koppel ui(gerrit) en daarna is het wapen klaar om te gebruiken inclusief matchende delay etc
 
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitShit))
         {
@@ -37,8 +35,7 @@ public class PickItUp : MonoBehaviour
                     {
                         props.equipped = true;
                         hitShit.collider.transform.position = clipp.transform.position;
-
-                        //using short ifstatemens. if(object.tag == sowrd) etc. 
+                    //place ui short "itemID exuipped"
                     }
 
                     if (Input.GetKeyDown("e"))

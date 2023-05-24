@@ -21,8 +21,6 @@ public class BaseMovement : MonoBehaviour
 
     public Camera cam;
     public ItemsProperties prop;
-
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -32,7 +30,16 @@ public class BaseMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //wasd movement below
+        if(prop.currentPlayerStam == 0)
+        {
+            moveSpd = 0;
+        }
+
+        if (prop.currentPlayerStam > 0)
+        {
+            moveSpd = 3;
+        }
+
         ver = Input.GetAxis("Vertical");
         vec3.z = ver;
 
@@ -50,7 +57,18 @@ public class BaseMovement : MonoBehaviour
             prop.noInput = false;
         }
 
-        //cam movement below
+        if(hor > 0 && ver > 0)
+        {
+            prop.currentPlayerStam -= 0.1f;
+        }
+
+        if (hor < 0 && ver < 0)
+        {
+            prop.currentPlayerStam -= 0.1f;
+        }
+
+        //cam
+
         rotY += Input.GetAxis("Mouse X") * sensX;
         rotX += Input.GetAxis("Mouse Y") * sensY;
 
