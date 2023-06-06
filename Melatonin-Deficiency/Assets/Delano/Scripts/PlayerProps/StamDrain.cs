@@ -6,8 +6,9 @@ using UnityEngine;
 public class StamDrain : MonoBehaviour
 {
     public ItemsProperties props;
-
+    public BaseMovement baseMov;
     public float use;
+
 
     // Start is called before the first frame update
 
@@ -21,6 +22,10 @@ public class StamDrain : MonoBehaviour
                 props.currentPlayerStam -= use * props.usesThisStamina;
             }
         }
+
+        //if(walking == true){stamina per meter -3}
+        //time.deltatime using 
+        //if(baseMov.)
     }
 }
 

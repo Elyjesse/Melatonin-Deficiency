@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class BaseMovement : MonoBehaviour
 {
@@ -56,17 +57,6 @@ public class BaseMovement : MonoBehaviour
         {
             prop.noInput = false;
         }
-
-        if(hor > 0 && ver > 0)
-        {
-            prop.currentPlayerStam -= 0.1f;
-        }
-
-        if (hor < 0 && ver < 0)
-        {
-            prop.currentPlayerStam -= 0.1f;
-        }
-
         //cam
 
         rotY += Input.GetAxis("Mouse X") * sensX;
@@ -76,5 +66,7 @@ public class BaseMovement : MonoBehaviour
 
         Quaternion target = Quaternion.Euler(-rotX, rotY, 0);
         transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * camSpd);
+
+
     }
 }
