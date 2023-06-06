@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
+
 public class SettingsScript : MonoBehaviour
 {
     public AudioMixer audioMixer;
 
     public TMP_Dropdown reDropdown;
-
+    public int resolution;
     Resolution[] resolutions;
-    private void Start()
+    public void Update()
     {
         resolutions = Screen.resolutions;
 
@@ -32,10 +34,14 @@ public class SettingsScript : MonoBehaviour
                 currentReIndex = i;
             }
         }
+        
 
         reDropdown.AddOptions(options);
         reDropdown.value = currentReIndex;
         reDropdown.RefreshShownValue();
+
+        PlayerPrefs.SetInt("resolutionIndex", 1);
+        resolution = PlayerPrefs.GetInt("resolutionIndex");
     }
 
     public void SetResolution(int resolutionIndex)
