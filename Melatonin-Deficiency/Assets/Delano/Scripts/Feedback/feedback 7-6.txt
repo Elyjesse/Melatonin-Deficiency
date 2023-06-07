@@ -1,0 +1,3 @@
+soms glitched de cube als je naar voren kijk kun heb je soms een inviseble barrier ( is kut) 
+movement en camera movement werkt goed behalve dat wanneer je rond kijkt dat je cube/player random vast loopt
+-Merlin 7-6-2023. 15:20

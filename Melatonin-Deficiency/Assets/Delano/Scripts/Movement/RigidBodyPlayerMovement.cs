@@ -73,6 +73,16 @@ public class RigidBodyPlayerMovement : MonoBehaviour
     {
         hor = Input.GetAxis("Horizontal");
         ver = Input.GetAxis("Vertical");
+
+        //when to jump
+
+        if(Input.GetKey(jumpKey) && readyPlayerOne && grounded)
+        {
+            readyPlayerOne = false;
+            JumpingJack();
+            Invoke(nameof(ResetJump), jumpcooldown);
+
+        }
     }
     private void MovePlayer()
     {
@@ -80,8 +90,14 @@ public class RigidBodyPlayerMovement : MonoBehaviour
 
         moveDir = orientations.forward * ver + orientations.right * hor;
         //always walking in direction yr looking at
-
+        if (grounded)
+        {
         thisRB.AddForce(moveDir.normalized * moveSpd * multiplier, ForceMode.Force);
+        }
+        else if(!grounded)
+        {
+            thisRB.AddForce(moveDir.normalized * moveSpd * multiplier * airMultiplier, ForceMode.Force);
+        }
     }
 
     private void SpeedLimiter()
@@ -101,6 +117,7 @@ public class RigidBodyPlayerMovement : MonoBehaviour
     {
         //first reset y velo to prevent forward jump
         thisRB.velocity = new Vector3(thisRB.velocity.x, 0f, thisRB.velocity.z);
+
         thisRB.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
