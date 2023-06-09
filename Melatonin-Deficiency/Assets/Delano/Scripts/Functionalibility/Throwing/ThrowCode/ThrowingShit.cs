@@ -6,7 +6,7 @@ using UnityEngine;
 public class ThrowingShit : MonoBehaviour
 {
     //variables
-
+    public RaycastHit rHit;
     public Transform cam;
     public Transform attackPoint;
     public GameObject objectToThrow;
@@ -59,9 +59,17 @@ public class ThrowingShit : MonoBehaviour
 
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 
+        //calculate direction
+
+        Vector3 forceDirection = cam.transform.forward;
+        if(Physics.Raycast(cam.position, cam.forward, out rHit, 500f))
+        {
+            forceDirection = (rHit.point - attackPoint.position).normalized;
+        }
+
         //may the force be with you
 
-        Vector3 forceToAdd = cam.transform.forward * throwForce + transform.up * throwForceUp;
+        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwForceUp;
 
         projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
 
