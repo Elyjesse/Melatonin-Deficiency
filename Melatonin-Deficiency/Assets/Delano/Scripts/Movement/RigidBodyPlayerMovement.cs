@@ -11,6 +11,7 @@ public class RigidBodyPlayerMovement : MonoBehaviour
     public float hor;
     public float ver;
     public float multiplier;
+    public float walkStamUse;
 
     public Vector3 moveDir;
 
@@ -33,6 +34,9 @@ public class RigidBodyPlayerMovement : MonoBehaviour
     public float airMultiplier;
     public bool readyPlayerOne;
     public KeyCode jumpKey = KeyCode.Space;
+
+    //stamina
+    public ItemsProperties props;
 
     //kuru kuru kuruuuuuu
     //how it works, shoot raycast to floor to check if touched
