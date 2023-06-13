@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class ThrowingShit : MonoBehaviour
 {
+    //refrences
+
+    public Explosion explo;
+    public TextMeshProUGUI grenadeCount;
+
     //variables
     public RaycastHit rHit;
     public Transform cam;
@@ -31,6 +37,8 @@ public class ThrowingShit : MonoBehaviour
 
     public void Update()
     {
+        grenadeCount.text = throwableAmmo.ToString();
+
 
         if(Input.GetKeyDown(throwKey) && readyToThrow && throwableAmmo > 0)
         {
