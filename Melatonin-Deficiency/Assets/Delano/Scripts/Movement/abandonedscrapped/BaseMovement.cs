@@ -19,6 +19,8 @@ public class BaseMovement : MonoBehaviour
     public float sensY;
     public float rotX;
     public float rotY;
+    public float SpeedMultiplier;
+    public float stamDrainSprint;
 
     public Camera cam;
     public ItemsProperties prop;
@@ -48,6 +50,15 @@ public class BaseMovement : MonoBehaviour
         vec3.x = hor;
 
         transform.Translate(vec3 * moveSpd * Time.deltaTime);
+        /*
+                //sprinting
+                if (Input.GetKey("shift"))
+                {
+                    moveSpd *= SpeedMultiplier;
+                    prop.currentPlayerStam -= stamDrainSprint;
+                }
+        */
+
 
         if (hor == 0 && ver == 0)
         {
