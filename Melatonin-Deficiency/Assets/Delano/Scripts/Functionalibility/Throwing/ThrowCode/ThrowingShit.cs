@@ -9,7 +9,7 @@ public class ThrowingShit : MonoBehaviour
     //refrences
 
     public Explosion explo;
-    public TextMeshProUGUI grenadeCount;
+   // public TextMeshProUGUI grenadeCount;
 
     //variables
     public RaycastHit rHit;
@@ -37,7 +37,7 @@ public class ThrowingShit : MonoBehaviour
 
     public void Update()
     {
-        grenadeCount.text = throwableAmmo.ToString();
+        //grenadeCount.text = throwableAmmo.ToString();
 
 
         if(Input.GetKeyDown(throwKey) && readyToThrow && throwableAmmo > 0)

@@ -20,6 +20,11 @@ public class Stamina : MonoBehaviour
     void Update()
     {
         textMesh.text = props.currentPlayerStam.ToString();
+        if(props.currentPlayerStam >= props.maxStam)
+        {
+            props.currentPlayerStam = props.maxStam;
+            //keep recharge on hold. 
+        }
 
         if (props.usingRn == true)
         {
