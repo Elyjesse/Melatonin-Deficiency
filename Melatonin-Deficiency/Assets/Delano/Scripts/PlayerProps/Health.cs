@@ -19,6 +19,6 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthUI.text = props.currentHp.ToString();
+       // healthUI.text = props.currentHp.ToString();
     }
 }

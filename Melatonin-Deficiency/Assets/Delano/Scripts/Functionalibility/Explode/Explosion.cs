@@ -12,6 +12,7 @@ public class Explosion : MonoBehaviour
     public float powerOfExplosion;
     public float distanceToExplosion;
     public bool explosionDone;
+    public bool initializingDone;
 
     //damage varying on distance of the explosion?
     public float damage;
@@ -37,7 +38,11 @@ public class Explosion : MonoBehaviour
 
     void ExplosionInitiating()
     {
+        if(initializingDone == false)
+        {
         print("explosion initialized");
+        }
+
         if(explosionDone == true)
         {
             //do nothing
@@ -52,8 +57,13 @@ public class Explosion : MonoBehaviour
 
                 if (rb != null)
                 rb.AddExplosionForce(powerOfExplosion, explosionPosition, radiusOfExplosion, 3.0f);
+
+                if(explosionDone == false)
+                {
                 print("explosion done");
+                }
                 explosionDone = true;
+                initializingDone = true;
         }
 
         }

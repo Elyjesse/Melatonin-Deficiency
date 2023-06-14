@@ -127,11 +127,4 @@ public class RigidBodyPlayerMovement : MonoBehaviour
     {
         readyPlayerOne = true;
     }
-
-
-    /*
-     * 
-     * problem. camera stays still. parent/child doesn't work. empty problem?
-     * 
-    */
 }
