@@ -4826,6 +4826,7 @@ GameObject:
   - component: {fileID: 4267175340869070517}
   - component: {fileID: 6549449083795884724}
   - component: {fileID: 4242930408242021705}
+  - component: {fileID: 4347609683651467429}
   m_Layer: 0
   m_Name: FinalGrenadeTest
   m_TagString: Untagged
@@ -4948,9 +4949,37 @@ MonoBehaviour:
   powerOfExplosion: 600
   distanceToExplosion: 0
   explosionDone: 0
+  initializingDone: 0
   damage: 0
   rb: {fileID: 4267175340869070517}
   affectedByExplosion: []
+  particleOnExplo: {fileID: 1880077776581961339, guid: afe3f6a29bf974f439327ba4888ccb14,
+    type: 3}
+  shitHappens: {fileID: 4347609683651467429}
+--- !u!114 &4347609683651467429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5138745269891317908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a407c7fc5d5dd004ebb98b9215ec64fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explo: {fileID: 0}
+  cam: {fileID: 0}
+  attackPoint: {fileID: 0}
+  objectToThrow: {fileID: 0}
+  maxThrowAmmo: 0
+  throwableAmmo: 0
+  throwCoolDown: 0
+  throwForce: 0
+  throwForceUp: 0
+  readyToThrow: 0
+  throwKey: 116
+  reload: 114
 --- !u!1 &8714877196812601339
 GameObject:
   m_ObjectHideFlags: 0

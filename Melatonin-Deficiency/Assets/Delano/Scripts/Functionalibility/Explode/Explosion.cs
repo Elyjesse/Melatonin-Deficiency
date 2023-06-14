@@ -19,6 +19,9 @@ public class Explosion : MonoBehaviour
     //using scriptableObjects for the health is impossible since they get locked on build.
     public Rigidbody rb;
     public Transform[] affectedByExplosion;
+    public GameObject particleOnExplo;
+
+    public ThrowingShit shitHappens;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,8 @@ public class Explosion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         countdown -= Time.deltaTime;
         if(countdown <= 0)
         {
@@ -49,6 +54,13 @@ public class Explosion : MonoBehaviour
         }
         else
         {
+            //Instantiate particle system.
+            
+
+            Instantiate(particleOnExplo);
+
+            particleOnExplo.transform.position = shitHappens.objectToThrow.transform.position;
+
             Vector3 explosionPosition = transform.position;
             Collider[] colliders = Physics.OverlapSphere(explosionPosition, radiusOfExplosion);
             foreach (Collider hit in colliders)
@@ -64,7 +76,10 @@ public class Explosion : MonoBehaviour
                 }
                 explosionDone = true;
                 initializingDone = true;
-        }
+
+                print("destroying initialized");
+                Destroy(this.gameObject);
+            }
 
         }
 
