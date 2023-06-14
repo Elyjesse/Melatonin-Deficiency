@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
-using UnityEditor.Callbacks;
-using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class RigidBodyPlayerMovement : MonoBehaviour

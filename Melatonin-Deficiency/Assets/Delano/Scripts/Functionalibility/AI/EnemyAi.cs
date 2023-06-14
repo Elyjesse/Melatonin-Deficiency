@@ -11,15 +11,16 @@ public class EnemyAi : MonoBehaviour
 
     public LayerMask whatsThaGround, whatsThaPlayer;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //partolling ui
+
+    public Vector3 walkPoint;
+    public bool walkPointIsSetup;
+    public float detectRange;
+
+    //enemy attack ai
+
+    public float attackInterval;
+    public bool hasAttacked;
+    //tets
 }
