@@ -6,7 +6,7 @@ using UnityEngine.Animations;
 
 public class Health : MonoBehaviour
 {
-    public TextMeshProUGUI healthUI;
+  //  public TextMeshProUGUI healthUI;
 
     public ItemsProperties props;
 

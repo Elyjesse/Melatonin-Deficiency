@@ -77,7 +77,7 @@ public class ScalableGunSystem : MonoBehaviour
     public void GiveEmHell()
     {
         readyToShoot = false;
-        bulletsLeft -= 1f;
+        bulletsLeft--;
 
         //spread of the gun
 
@@ -89,13 +89,14 @@ public class ScalableGunSystem : MonoBehaviour
         Vector3 directionOfBullets = firsplayerCam.transform.forward + new Vector3(x, y, 0);
 
         //raycast time
-        if (Physics.Raycast(firsplayerCam.transform.position, directionOfBullets, out rHit, range, whoIsEnemy))
+        if (Physics.Raycast(firsplayerCam.transform.position, directionOfBullets, out rHit, range))
         {
             Debug.Log(rHit.collider.name);
 
-            if (rHit.collider.CompareTag("Enemy"))
+            if (gameObject.tag ==("Enemy"))
             {
                 print("HasHit");
+                
             }
         }
 

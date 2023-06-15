@@ -13,7 +13,7 @@ public class Stamina : MonoBehaviour
 
     public float rechargeRate;
 
-    public TextMeshProUGUI textMesh;
+    //public TextMeshProUGUI textMesh;
 
     // Update is called once per frame
 
