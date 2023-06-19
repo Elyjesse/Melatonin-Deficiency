@@ -27,7 +27,6 @@ public class Gun : MonoBehaviour
 
     public RaycastHit rHit;
     public Camera fpsCam;
-    public EquippingWeapon equipp;
 
     // Update is called once per frame
     void Update()
@@ -43,10 +42,9 @@ public class Gun : MonoBehaviour
 
         if(allowedToShoot == true)
         {
-            if (equipp.equipped == true)
-            {
+            
         ShootingImplied();
-            }
+            
         }
 
         if (burstAutoRifle)
