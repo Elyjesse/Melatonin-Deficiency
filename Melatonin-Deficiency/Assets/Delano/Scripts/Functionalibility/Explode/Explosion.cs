@@ -21,8 +21,6 @@ public class Explosion : MonoBehaviour
     public Transform[] affectedByExplosion;
     public GameObject particleOnExplo;
 
-    public ThrowingShit shitHappens;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +57,7 @@ public class Explosion : MonoBehaviour
 
             Instantiate(particleOnExplo);
 
-            particleOnExplo.transform.position = shitHappens.objectToThrow.transform.position;
+            particleOnExplo.transform.position = this.transform.position;
 
             Vector3 explosionPosition = transform.position;
             Collider[] colliders = Physics.OverlapSphere(explosionPosition, radiusOfExplosion);

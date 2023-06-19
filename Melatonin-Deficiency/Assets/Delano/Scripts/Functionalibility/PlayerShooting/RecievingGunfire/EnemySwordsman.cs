@@ -20,4 +20,8 @@ public class EnemySwordsman : MonoBehaviour
         health -= ammount; //yuh
     }
 
+    public void GiveDMG()
+    {
+
+    }
 }

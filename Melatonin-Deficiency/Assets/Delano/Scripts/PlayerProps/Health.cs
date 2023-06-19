@@ -6,19 +6,30 @@ using UnityEngine.Animations;
 
 public class Health : MonoBehaviour
 {
-  //  public TextMeshProUGUI healthUI;
+    //keybinds
+    //if equipped the healing flask
+    public KeyCode usingItems = KeyCode.Mouse2;
 
-    public ItemsProperties props;
+    //properties
+    public float health, maxHealth, healthRegen;
+    public float intervalOfHeal;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
+    {
+        if (Input.GetKeyDown(usingItems))
+        {
+            print("pressed the thing");
+            TakingDamage();
+        }
+    }
+
+    void TakingDamage()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void Healing()
     {
-       // healthUI.text = props.currentHp.ToString();
+
     }
 }

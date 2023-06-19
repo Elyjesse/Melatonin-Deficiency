@@ -59,13 +59,13 @@ public class Gun : MonoBehaviour
 
         if (Input.GetKeyDown(reloading))
         {
-            
+            ReloadingTheGun();
         }
     }
 
     void ShootingImplied()
     {
-        if(fullAuto == true)
+        if (fullAuto == true)
         {
             if (Input.GetKey(firing))
             {
@@ -81,50 +81,50 @@ public class Gun : MonoBehaviour
                 Shooting();
             }
         }
+    }
 
-        void Shooting()
+    void Shooting()
+    {
+        bulletsInMag -=  bulletsPerShot;
+
+        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out rHit, range))
         {
-            bulletsInMag -=  bulletsPerShot;
+            Debug.Log(rHit.transform.name);
 
-            if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out rHit, range))
+            EnemySwordsman enemies = rHit.transform.GetComponent<EnemySwordsman>();
+
+            if(enemies != null)
             {
-                Debug.Log(rHit.transform.name);
-
-                EnemySwordsman enemies = rHit.transform.GetComponent<EnemySwordsman>();
-
-                if(enemies != null)
-                {
-                    enemies.TakeDMG(damageDealing * bulletsPerShot);
-                }
+                enemies.TakeDMG(damageDealing * bulletsPerShot);
             }
         }
+    }
 
-        void ReloadingTheGun()
+    void ReloadingTheGun()
+    {
         {
+            print("reloading now");
+
+            if (bulletsInMag == magSize)
             {
-                print("reloading now");
+                print("Mag is already full.");
+                magIsFull = true;
+            }
 
-                if (bulletsInMag == magSize)
-                {
-                    print("Mag is already full.");
-                    magIsFull = true;
-                }
+            if (bulletsInMag <= magSize)
+            {
+                magIsFull = false;
+            }
 
-                if (bulletsInMag <= magSize)
-                {
-                    magIsFull = false;
-                }
+            else if (magIsFull == false)
+            {
+                print("Reloading magazine");
 
-                else if (magIsFull == false)
-                {
-                    print("Reloading magazine");
+                //calculate difference in bullets
 
-                    //calculate difference in bullets
-
-                    bulletsInMag -= magSize = bulletsDiff;
-                    bulletsDiff -= bulletsInBag;
-                    bulletsInMag = magSize;
-                }
+                bulletsInMag -= magSize = bulletsDiff;
+                bulletsDiff -= bulletsInBag;
+                bulletsInMag = magSize;
             }
         }
     }
