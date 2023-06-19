@@ -10,12 +10,22 @@ public class UiProps : MonoBehaviour
     public GameObject player;
 
     //properties
-
+    public float rangeOfView;
+    public float dist;
 
     //interaction
 
     private void Update()
     {
+        //calculate distance within player and ai
+        dist = Vector3.Distance(navigator.transform.position, transform.position);
+
+        if(dist <= rangeOfView)
+        {
+            //follow the player
         navigator.SetDestination(player.transform.position);
+        }
+
+        //shooting implemented next
     }
 }
