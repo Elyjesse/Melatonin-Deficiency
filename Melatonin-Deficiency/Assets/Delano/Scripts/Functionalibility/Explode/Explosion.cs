@@ -76,7 +76,16 @@ public class Explosion : MonoBehaviour
                 initializingDone = true;
 
                 print("destroying initialized");
+                StartCoroutine(WaitAndBleed());
                 Destroy(this.gameObject);
+
+                //start coroutine and wait for 3 seconds to destroy particle
+
+                IEnumerator WaitAndBleed()
+                {
+                    yield return new WaitForSeconds(3);
+                    Destroy(this.particleOnExplo);
+                }
             }
 
         }

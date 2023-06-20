@@ -18,13 +18,20 @@ public class UiProps : MonoBehaviour
     private void Update()
     {
         //calculate distance within player and ai
-        dist = Vector3.Distance(navigator.transform.position, transform.position);
+        dist = Vector3.Distance(navigator.transform.position, player.transform.position);
 
         if(dist <= rangeOfView)
         {
             //follow the player
-        navigator.SetDestination(player.transform.position);
+            navigator.SetDestination(player.transform.position);
         }
+        else
+        {
+            navigator.Stop();
+        }
+        
+        //patrolling
+
 
         //shooting implemented next
     }

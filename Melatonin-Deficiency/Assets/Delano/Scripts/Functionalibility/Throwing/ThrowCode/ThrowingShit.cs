@@ -8,10 +8,6 @@ public class ThrowingShit : MonoBehaviour
 {
     //refrences
 
-    public Explosion explo;
-   // public TextMeshProUGUI grenadeCount;
-
-    //variables
     public RaycastHit rHit;
     public Transform cam;
     public Transform attackPoint;
