@@ -76,10 +76,9 @@ public class RigidBodyPlayerMovement : MonoBehaviour
         hor = Input.GetAxis("Horizontal");
         ver = Input.GetAxis("Vertical");
 
-        
-
         //when to jump
-        if (Input.GetKey(jumpKey) && readyPlayerOne && grounded)
+
+        if(Input.GetKey(jumpKey) && readyPlayerOne && grounded)
         {
             readyPlayerOne = false;
             JumpingJack();
@@ -122,7 +121,6 @@ public class RigidBodyPlayerMovement : MonoBehaviour
         thisRB.velocity = new Vector3(thisRB.velocity.x, 0f, thisRB.velocity.z);
 
         thisRB.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-        props.currentPlayerStam -= jumpStamConsume;
     }
 
     private void ResetJump()
