@@ -11,9 +11,9 @@ public class UISysteem : MonoBehaviour
     public Stamina rechargingRn1;
     public Stamina rechargingRn2;
     public Stamina rechargeRate;
-    public Stamina currentPlayerStam;
-    public void SetStamina(int currentPlayerStam)
+    public Stamina maxStam;
+    public void SetStamina(int maxStam)
     {
-        stamP.value = currentPlayerStam;
+        stamP.value = maxStam;
     }
 }

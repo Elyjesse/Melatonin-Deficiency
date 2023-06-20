@@ -2595,7 +2595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2913,7 +2913,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 135.435, y: -29.638977}
+  m_AnchoredPosition: {x: 135.43506, y: -29.639038}
   m_SizeDelta: {x: 304.86, y: 54.792}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599583034
@@ -3613,7 +3613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 39.718018, y: -31.29303}
+  m_AnchoredPosition: {x: 39.718018, y: -31.29309}
   m_SizeDelta: {x: 121.944, y: 109.584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &766392229
@@ -4296,7 +4296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4695,10 +4695,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4720,7 +4720,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 72.4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4876,6 +4876,7 @@ GameObject:
   - component: {fileID: 1095019465}
   - component: {fileID: 1095019464}
   - component: {fileID: 1095019463}
+  - component: {fileID: 1095019467}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -4970,6 +4971,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1095019467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095019462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcbe9a2a39f6c5944814d876a6be5ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthP: {fileID: 599583034}
+  stamP: {fileID: 996534948}
+  props: {fileID: 0}
+  rechargingRn1: {fileID: 1254522767}
+  rechargingRn2: {fileID: 1254522767}
+  rechargeRate: {fileID: 1254522767}
+  maxStam: {fileID: 1254522767}
 --- !u!1 &1149931081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 310e49ab2de028e46872bd07fae074a7,
@@ -5039,7 +5059,6 @@ MonoBehaviour:
   firing: 323
   reloading: 114
   fpsCam: {fileID: 961739752}
-  equipp: {fileID: 0}
 --- !u!1 &1160234425
 GameObject:
   m_ObjectHideFlags: 0
@@ -5430,10 +5449,10 @@ GameObject:
   - component: {fileID: 1254522761}
   - component: {fileID: 1254522760}
   - component: {fileID: 1254522764}
-  - component: {fileID: 1254522765}
   - component: {fileID: 1254522767}
   - component: {fileID: 1254522766}
   - component: {fileID: 1254522768}
+  - component: {fileID: 1254522769}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5537,38 +5556,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1254522765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254522753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92f4c2920796c0249aa64b62b2ab03b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpd: 240
-  hor: 0
-  ver: 0
-  multiplier: 10
-  walkStamUse: 0.8
-  moveDir: {x: 0, y: 0, z: 0}
-  orientations: {fileID: 2037028345}
-  playerHeight: 1
-  whatsGrounded:
-    serializedVersion: 2
-    m_Bits: 64
-  grounded: 0
-  groundDrag: 4
-  jumpForce: 500
-  jumpcooldown: 2
-  jumpStamConsume: 7
-  airMultiplier: 0.94
-  readyPlayerOne: 1
-  jumpKey: 32
-  props: {fileID: 1254522766}
 --- !u!114 &1254522766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5656,6 +5643,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a464a1ec60b5b284194a7addfa6200ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  props: {fileID: 1254522766}
+--- !u!114 &1254522769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254522753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f4c2920796c0249aa64b62b2ab03b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpd: 240
+  hor: 0
+  ver: 0
+  multiplier: 10
+  walkStamUse: 0.8
+  moveDir: {x: 0, y: 0, z: 0}
+  orientations: {fileID: 2037028345}
+  playerHeight: 1
+  whatsGrounded:
+    serializedVersion: 2
+    m_Bits: 64
+  grounded: 0
+  groundDrag: 4
+  jumpForce: 500
+  jumpcooldown: 2
+  jumpStamConsume: 7
+  airMultiplier: 0.94
+  readyPlayerOne: 1
+  jumpKey: 32
   props: {fileID: 1254522766}
 --- !u!1 &1263109661
 GameObject:
@@ -7257,7 +7276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.88411784, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
