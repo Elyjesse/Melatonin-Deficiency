@@ -26,11 +26,6 @@ public class Stamina : MonoBehaviour
             //keep recharge on hold. 
         }
 
-        if (props.usingRn == true)
-        {
-            props.currentPlayerStam -= props.usesThisStamina;
-        }
-
         if (props.noInput == true)
         {
             rechargingRn1 = true;

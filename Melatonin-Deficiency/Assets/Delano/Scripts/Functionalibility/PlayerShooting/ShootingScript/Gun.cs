@@ -103,28 +103,31 @@ public class Gun : MonoBehaviour
     void ReloadingTheGun()
     {
         {
-            print("reloading now");
-
             if (bulletsInMag == magSize)
             {
                 print("Mag is already full.");
                 magIsFull = true;
             }
 
-            if (bulletsInMag <= magSize)
+            else if (bulletsInMag <= magSize)
             {
                 magIsFull = false;
             }
 
-            else if (magIsFull == false)
+
+            if (magIsFull == false)
             {
                 print("Reloading magazine");
 
                 //calculate difference in bullets
 
-                bulletsInMag -= magSize = bulletsDiff;
+                magSize -= bulletsInMag = bulletsDiff;
+
                 bulletsDiff -= bulletsInBag;
+
                 bulletsInMag = magSize;
+
+                bulletsDiff = 0f;
             }
         }
     }
