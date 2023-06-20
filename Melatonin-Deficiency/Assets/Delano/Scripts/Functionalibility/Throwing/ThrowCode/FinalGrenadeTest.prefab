@@ -129,11 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813cf18ea7b25ad4495c5bd8f14588e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceStrength: 600
+  forceStrength: 144000
   cookingTime: 2
   countdown: 0
   radiusOfExplosion: 20
-  powerOfExplosion: 600
+  powerOfExplosion: 144000
   distanceToExplosion: 0
   explosionDone: 0
   initializingDone: 0
@@ -142,7 +142,6 @@ MonoBehaviour:
   affectedByExplosion: []
   particleOnExplo: {fileID: 1880077776581961339, guid: afe3f6a29bf974f439327ba4888ccb14,
     type: 3}
-  shitHappens: {fileID: 0}
 --- !u!1 &8714877196812601339
 GameObject:
   m_ObjectHideFlags: 0
