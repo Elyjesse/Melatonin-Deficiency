@@ -7,11 +7,13 @@ public class UiProps : MonoBehaviour
 {
     //refrences
     public NavMeshAgent navigator;
+    public NavMeshAgent navigator1;
     public GameObject player;
 
     //properties
     public float rangeOfView;
     public float dist;
+    public float distToComrades;
     public bool checkWithinRange;
 
     //interaction
@@ -47,7 +49,10 @@ public class UiProps : MonoBehaviour
             checkWithinRange = false;
         }
         
-        //patrolling
+        //alarming nearby ai
+
+        distToComrades = Vector3.Distance(navigator.transform.position, navigator1.transform.position);
+        //ui works in duos, only one can alarm their teammate
 
 
         //shooting implemented next

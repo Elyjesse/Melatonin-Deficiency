@@ -31,7 +31,17 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(bulletsInMag >= 0f)
+
+        if (bulletsInMag <= magSize)
+        {
+            magIsFull = false;
+        }
+
+        if (bulletsInMag == magSize)
+        {
+            magIsFull = true;
+        }
+        if (bulletsInMag >= 0f)
         {
             allowedToShoot = true;
         }
@@ -103,28 +113,24 @@ public class Gun : MonoBehaviour
     void ReloadingTheGun()
     {
         {
-            print("reloading now");
-
-            if (bulletsInMag == magSize)
-            {
-                print("Mag is already full.");
-                magIsFull = true;
-            }
-
-            if (bulletsInMag <= magSize)
-            {
-                magIsFull = false;
-            }
-
-            else if (magIsFull == false)
+            if (magIsFull == false)
             {
                 print("Reloading magazine");
 
                 //calculate difference in bullets
 
-                bulletsInMag -= magSize = bulletsDiff;
-                bulletsDiff -= bulletsInBag;
+                bulletsDiff = magSize - bulletsInMag;
+                //magSize -= bulletsInMag = bulletsDiff;
+                print("diff =");
+                print(bulletsDiff);
+
+                bulletsInBag-= bulletsDiff;
+
                 bulletsInMag = magSize;
+
+                bulletsDiff = 0f;
+
+                magIsFull = true;
             }
         }
     }

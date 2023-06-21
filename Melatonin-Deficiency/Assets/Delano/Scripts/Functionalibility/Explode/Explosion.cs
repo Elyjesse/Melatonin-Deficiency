@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,13 +14,14 @@ public class Explosion : MonoBehaviour
     public float distanceToExplosion;
     public bool explosionDone;
     public bool initializingDone;
+    public float damageDealing;
 
-    //damage varying on distance of the explosion?
-    public float damage;
     //using scriptableObjects for the health is impossible since they get locked on build.
     public Rigidbody rb;
     public Transform[] affectedByExplosion;
     public GameObject particleOnExplo;
+    public ItemsProperties props;
+    public EnemySwordsman enemies;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +70,7 @@ public class Explosion : MonoBehaviour
                 if (rb != null)
                 rb.AddExplosionForce(powerOfExplosion, explosionPosition, radiusOfExplosion, 3.0f);
 
+
                 if(explosionDone == false)
                 {
                 print("explosion done");
@@ -75,21 +78,27 @@ public class Explosion : MonoBehaviour
                 explosionDone = true;
                 initializingDone = true;
 
+                GiveDamage();
                 print("destroying initialized");
-                StartCoroutine(WaitAndBleed());
                 Destroy(this.gameObject);
 
                 //start coroutine and wait for 3 seconds to destroy particle
 
-                IEnumerator WaitAndBleed()
-                {
-                    yield return new WaitForSeconds(3);
-                    Destroy(this.particleOnExplo);
-                }
             }
+
 
         }
 
+
+         void GiveDamage()
+        {
+            Vector3 explosionPosition = transform.position;
+            Collider[] colliders = Physics.OverlapSphere(explosionPosition, radiusOfExplosion);
+            foreach (Collider hit in colliders)
+            {
+
+            }
+        }
         //add force in all directions and set ovjects within range airborne
 
         //calculate range within explosion. if closer to the epicentre of the explosion, more damage. perhaps a calculation?

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ItemsProperties : MonoBehaviour
 {
-    public float currentPlayerStam, usesThisStamina, maxStam;
-    public bool noInput, usingRn;
-  
+    public float currentPlayerStam, maxStam;
+    public bool noInput;
+
+    public float currentPlayerHealth, maxHealth;
 }
