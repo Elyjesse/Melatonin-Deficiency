@@ -12,6 +12,7 @@ public class UiProps : MonoBehaviour
     //properties
     public float rangeOfView;
     public float dist;
+    public bool checkWithinRange;
 
     //interaction
 
@@ -22,12 +23,28 @@ public class UiProps : MonoBehaviour
 
         if(dist <= rangeOfView)
         {
+            navigator.enabled = true;
+
+            if(checkWithinRange == false)
+            {
+                print("navigator has activated again");
+            }
+
+            checkWithinRange = true;
+
             //follow the player
             navigator.SetDestination(player.transform.position);
         }
         else
         {
-            navigator.Stop();
+            if(checkWithinRange == true)
+            {
+                print("navmesh has shut down");
+
+            }
+
+            navigator.enabled = false;
+            checkWithinRange = false;
         }
         
         //patrolling
