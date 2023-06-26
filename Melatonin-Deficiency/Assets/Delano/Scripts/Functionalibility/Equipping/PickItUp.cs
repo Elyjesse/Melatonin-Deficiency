@@ -21,27 +21,49 @@ public class PickItUp : MonoBehaviour
 
     public static bool equippedThisObject;
     public float rangeOfPickup;
-
-
+    public Vector3 currentAngle;
 
     void Update()
     {
         if (Input.GetKeyDown(pickup))
         {
             PickItUpPls();
+            
         }
-    }
+        if(equippedThisObject == true)
+        {
+            //rHit.transform.position = holdPos.transform.position;
+            rHit.transform.SetParent(camPos.transform);
+            rHit.transform.eulerAngles = holdPos.transform.eulerAngles;
+        }
+    } 
 
     void PickItUpPls()
     {
         if(Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, rangeOfPickup))
         {
-            Debug.Log(rHit.collider.name);
+            if(rHit.transform.gameObject.tag == "interactable")
+            {
+                Debug.Log(rHit.collider.name);
+
+                rHit.transform.position = holdPos.transform.position;
+                //currentAngle = new Vector3(-111, -556, 35);
+                //rHit.transform.eulerAngles = currentAngle;
+                rHit.rigidbody.useGravity = false;
+                rHit.rigidbody.isKinematic = false;
+                rHit.collider.isTrigger = true;
+                equippedThisObject = true;
+            }   
         }
     }
 
     void DropThatNOW()
     {
+        //just yeet it with physics
 
+        rHit.rigidbody.useGravity = true;
+        rHit.rigidbody.isKinematic = true;
+        equippedThisObject = false;
+        rHit.collider.isTrigger = false;
     }
 }
