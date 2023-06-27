@@ -19,51 +19,71 @@ public class PickItUp : MonoBehaviour
 
     //properties
 
-    public static bool equippedThisObject;
+    public  bool hisObjectActive;
     public float rangeOfPickup;
     public Vector3 currentAngle;
+    public float throwForce, throwForceUp;
+    public Rigidbody projectileRB;
 
     void Update()
     {
         if (Input.GetKeyDown(pickup))
         {
-            PickItUpPls();
-            
+            print("pickup initialized");
+            if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, rangeOfPickup))
+            {
+                print("raycast initialized");
+                if (rHit.transform.tag == "Interract")
+                {
+                    print("tag checked");
+                    PickItUpPls();
+                }
+            }
         }
-        if(equippedThisObject == true)
+        if(hisObjectActive == true)
         {
-            //rHit.transform.position = holdPos.transform.position;
             rHit.transform.SetParent(camPos.transform);
-            rHit.transform.eulerAngles = holdPos.transform.eulerAngles;
         }
+
+        if (Input.GetKeyDown(drop))
+        {
+            DropThatNOW();
+        }
+        
     } 
 
     void PickItUpPls()
     {
-        if(Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, rangeOfPickup))
         {
-            if(rHit.transform.gameObject.tag == "interactable")
-            {
-                Debug.Log(rHit.collider.name);
+            Debug.Log(rHit.collider.name);
 
-                rHit.transform.position = holdPos.transform.position;
-                //currentAngle = new Vector3(-111, -556, 35);
-                //rHit.transform.eulerAngles = currentAngle;
-                rHit.rigidbody.useGravity = false;
-                rHit.rigidbody.isKinematic = false;
-                rHit.collider.isTrigger = true;
-                equippedThisObject = true;
-            }   
+            rHit.transform.eulerAngles = camPos.transform.forward;
+            rHit.transform.position = holdPos.transform.position;
+            rHit.rigidbody.useGravity = false;
+            rHit.rigidbody.isKinematic = false;
+            rHit.collider.isTrigger = true;
+            hisObjectActive = true; 
         }
     }
 
     void DropThatNOW()
     {
-        //just yeet it with physics
-
+        print("dropping initialized");
         rHit.rigidbody.useGravity = true;
         rHit.rigidbody.isKinematic = true;
-        equippedThisObject = false;
+        hisObjectActive= false;
         rHit.collider.isTrigger = false;
+
+        //throw the gun
+        projectileRB = rHit.transform.GetComponent<Rigidbody>();
+        Vector3 forceDirection = camPos.transform.forward;
+        if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, 500f))
+        {
+            forceDirection = (rHit.point - holdPos.position).normalized;
+        }
+
+        //may the force be with you
+        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwForceUp;
+        projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
     }
 }

@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class EnemySwordsman : MonoBehaviour
 {
-
+    public UiProps userInterface;
     public float health;
 
     private void Update()
     {
         if (health <= 0f)
         {
+            userInterface.navigator.enabled = false;
             print("object destroyed");
             Destroy(gameObject);
         }
@@ -17,7 +18,7 @@ public class EnemySwordsman : MonoBehaviour
 
     public void TakeDMG(float ammount)
     {
-        health -= ammount; //yuh
+        health -= ammount;
     }
 
     public void GiveDMG()

@@ -6,12 +6,11 @@ public class Gun : MonoBehaviour
     public bool fullAuto;
     public bool singleShot;
     public bool burstAutoRifle;
-
     //gun properties
 
     public float damageDealing, range;
     public float bulletsPerShot;
-    public bool allowedToShoot;
+    public static bool allowedToShoot;
 
 
     //ammo
@@ -31,6 +30,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //backend
 
         if (bulletsInMag <= magSize)
         {
@@ -57,7 +57,7 @@ public class Gun : MonoBehaviour
             
         }
 
-        if (burstAutoRifle)
+        if (burstAutoRifle == true)
         {
             bulletsPerShot = 3f;
         }
