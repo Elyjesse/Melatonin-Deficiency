@@ -10,17 +10,17 @@ public class WeaponManager : MonoBehaviour
     //properties
     public bool equipped;
     public bool holdingWeapon;
+    public GameObject[] weaponsInPool;
+    public GameObject holdingWeapons;
 
     public int weaponPool;
-    public int weaponsInInv;
+    public int numberOfTheBeast;
+    public int maxNumber;
 
     //keyBinds
     public KeyCode switching = KeyCode.Tab;
 
     //refernces
-    public Gun burstAuto;
-    public Gun automaticGun;
-    public Gun singleShot;
     public PickItUp pickDatUp;
 
     private void Update()
@@ -31,11 +31,17 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    public void ToTheShadowRealm()
+    {
+        //send the weapon currently equipped to the pool
+
+    }
+
     public void SwitchingTeams()
     {
-        //check how many weapons are in the "pool"
+        //check how many weapons are in the "pool" checking with the pickup. pickup will assign numbers to it first. 
 
-        //assign number to weapons differing from order of entry. 
+        //assign number/ID to weapons differing from order of entry. 
 
         //switching with TAB within weapons. 
     }

@@ -11,6 +11,7 @@ public class PickItUp : MonoBehaviour
     public GameObject Player;
     public Transform holdPos; // aka throwpoint
     public RaycastHit rHit;
+    public WeaponManager armsAbroad;
 
     //keyBinds
 
@@ -24,6 +25,7 @@ public class PickItUp : MonoBehaviour
     public Vector3 currentAngle;
     public float throwForce, throwForceUp;
     public Rigidbody projectileRB;
+    public bool holdingArms;
 
     void Update()
     {
@@ -32,11 +34,35 @@ public class PickItUp : MonoBehaviour
             print("pickup initialized");
             if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, rangeOfPickup))
             {
+                //assign number to the picked up item 
+
+
+                //if holdingWeapons = full then unable to puckup new weapon, the new weapon will be switched and old weapon will be sent to the pool
                 print("raycast initialized");
                 if (rHit.transform.tag == "Interract")
                 {
-                    print("tag checked");
-                    PickItUpPls();
+                    armsAbroad.holdingWeapons = rHit.transform.gameObject;
+                    holdingArms = true;
+
+                    if(armsAbroad.numberOfTheBeast <= armsAbroad.maxNumber)
+                    {
+                        print("tag checked");
+
+                        if(holdingArms == false)
+                        {
+                            PickItUpPls();
+                        }
+                    }
+
+                    if(holdingArms == true)
+                    {
+                        //sending equipped item to the pool
+                        armsAbroad.ToTheShadowRealm();
+
+                        PickItUpPls();
+                    }
+
+
                 }
             }
         }
@@ -63,6 +89,8 @@ public class PickItUp : MonoBehaviour
             rHit.rigidbody.isKinematic = false;
             rHit.collider.isTrigger = true;
             hisObjectActive = true; 
+
+            
         }
     }
 
