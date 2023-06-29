@@ -1,0 +1,2 @@
+equipping. fixing rotation
+de-equipping. phases through the floor when you drop a weapon

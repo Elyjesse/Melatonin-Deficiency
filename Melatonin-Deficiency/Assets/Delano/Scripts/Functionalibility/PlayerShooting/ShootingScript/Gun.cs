@@ -26,51 +26,58 @@ public class Gun : MonoBehaviour
 
     public RaycastHit rHit;
     public Camera fpsCam;
+    public PickItUp pickupTruck;
 
     // Update is called once per frame
     void Update()
     {
-        //backend
-
-        if (bulletsInMag <= magSize)
-        {
-            magIsFull = false;
-        }
-
-        if (bulletsInMag == magSize)
-        {
-            magIsFull = true;
-        }
-        if (bulletsInMag >= 0f)
-        {
-            allowedToShoot = true;
-        }
-        else
+        
+        if(pickupTruck.holdingArms == false)
         {
             allowedToShoot = false;
         }
 
-        if(allowedToShoot == true)
+        if(pickupTruck.holdingArms == true)
         {
-            
-        ShootingImplied();
-            
-        }
+            if (bulletsInMag <= magSize)
+            {
+                magIsFull = false;
+            }
 
-        if (burstAutoRifle == true)
-        {
-            bulletsPerShot = 3f;
-        }
+            if (bulletsInMag == magSize)
+            {
+                magIsFull = true;
+            }
+            if (bulletsInMag >= 0f)
+            {
+                allowedToShoot = true;
+            }
+            else
+            {
+                allowedToShoot = false;
+            }
 
-        else
-        {
-            bulletsPerShot = 1f;
+            if (allowedToShoot == true)
+            {
+                ShootingImplied();
+            }
+
+            if (burstAutoRifle == true)
+            {
+                bulletsPerShot = 3f;
+            }
+
+            else
+            {
+                bulletsPerShot = 1f;
+            }
         }
 
         if (Input.GetKeyDown(reloading))
         {
             ReloadingTheGun();
         }
+
     }
 
     void ShootingImplied()

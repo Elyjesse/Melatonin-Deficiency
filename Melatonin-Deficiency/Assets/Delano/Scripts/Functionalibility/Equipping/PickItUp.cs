@@ -9,9 +9,11 @@ public class PickItUp : MonoBehaviour
 
     public Camera camPos;
     public GameObject Player;
+    public GameObject interactedGun;
     public Transform holdPos; // aka throwpoint
     public RaycastHit rHit;
-    public WeaponManager armsAbroad;
+    public Rigidbody gunRB;
+    public Collider coll;
 
     //keyBinds
 
@@ -24,7 +26,6 @@ public class PickItUp : MonoBehaviour
     public float rangeOfPickup;
     public Vector3 currentAngle;
     public float throwForce, throwForceUp;
-    public Rigidbody projectileRB;
     public bool holdingArms;
 
     void Update()
@@ -34,35 +35,20 @@ public class PickItUp : MonoBehaviour
             print("pickup initialized");
             if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, rangeOfPickup))
             {
-                //assign number to the picked up item 
-
-
-                //if holdingWeapons = full then unable to puckup new weapon, the new weapon will be switched and old weapon will be sent to the pool
+                gunRB = rHit.transform.gameObject.GetComponent<Rigidbody>();
+                coll = rHit.transform.gameObject.GetComponent<Collider>();
+                interactedGun = rHit.transform.gameObject;
                 print("raycast initialized");
                 if (rHit.transform.tag == "Interract")
                 {
-                    //armsAbroad.holdingWeapons = rHit.transform.gameObject;
-                    //holdingArms = true;
-
-                    if(armsAbroad.numberOfTheBeast <= armsAbroad.maxNumber)
-                    {
-                        print("tag checked");
-
-                        if(holdingArms == false)
-                        {
-                            PickItUpPls();
-                        }
-                    }
-
-                    if(holdingArms == true)
-                    {
-                        //sending equipped item to the pool
-                        armsAbroad.ToTheShadowRealm();
-
-                        PickItUpPls();
-                    }
-
-
+                    rHit.transform.position = holdPos.transform.position;
+                    coll.isTrigger = true;
+                    interactedGun.isStatic = true;
+                    gunRB.isKinematic = true;
+                    gunRB.useGravity = false;
+                    currentAngle =new Vector3(-90, -15, -114);
+                    interactedGun.transform.eulerAngles = currentAngle;
+                    hisObjectActive = true;
                 }
             }
         }
@@ -96,6 +82,7 @@ public class PickItUp : MonoBehaviour
 
     void DropThatNOW()
     {
+        //rather than using rigidbodu, assign a gameO bject and link that to the gameObject hiot with raycast
         print("dropping initialized");
         rHit.rigidbody.useGravity = true;
         rHit.rigidbody.isKinematic = true;
@@ -103,15 +90,5 @@ public class PickItUp : MonoBehaviour
         rHit.collider.isTrigger = false;
 
         //throw the gun
-        projectileRB = rHit.transform.GetComponent<Rigidbody>();
-        Vector3 forceDirection = camPos.transform.forward;
-        if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, 500f))
-        {
-            forceDirection = (rHit.point - holdPos.position).normalized;
-        }
-
-        //may the force be with you
-        Vector3 forceToAdd = forceDirection * throwForce + transform.up * throwForceUp;
-        projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
     }
 }

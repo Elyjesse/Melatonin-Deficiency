@@ -184,6 +184,7 @@ MonoBehaviour:
   firing: 323
   reloading: 114
   fpsCam: {fileID: 961739752}
+  pickupTruck: {fileID: 0}
 --- !u!1 &74519050
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +279,7 @@ MonoBehaviour:
   firing: 323
   reloading: 114
   fpsCam: {fileID: 961739752}
+  pickupTruck: {fileID: 0}
 --- !u!114 &83088918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1276,6 +1278,7 @@ GameObject:
   - component: {fileID: 780487338}
   - component: {fileID: 780487337}
   - component: {fileID: 780487344}
+  - component: {fileID: 780487345}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1328,7 +1331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74450d62868b5eb439c597f09dd72603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayerStam: 100
+  currentPlayerStam: 0
   maxStam: 100
   noInput: 0
   currentPlayerHealth: 100
@@ -1442,8 +1445,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camPos: {fileID: 961739752}
   Player: {fileID: 780487335}
+  interactedGun: {fileID: 0}
   holdPos: {fileID: 1360438859}
-  armsAbroad: {fileID: 0}
+  gunRB: {fileID: 0}
+  coll: {fileID: 0}
   pickup: 102
   drop: 113
   hisObjectActive: 0
@@ -1451,8 +1456,23 @@ MonoBehaviour:
   currentAngle: {x: 0, y: 0, z: 0}
   throwForce: 0
   throwForceUp: 0
-  projectileRB: {fileID: 0}
   holdingArms: 0
+--- !u!114 &780487345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780487335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae6fe34ccb5b4b4fbcc82691c38e889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  props: {fileID: 780487338}
+  rechargingRn1: 0
+  rechargingRn2: 0
+  rechargeRate: 5
 --- !u!1001 &806550945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2885,6 +2905,7 @@ MonoBehaviour:
   firing: 323
   reloading: 114
   fpsCam: {fileID: 961739752}
+  pickupTruck: {fileID: 0}
 --- !u!114 &1474521462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3977,6 +3998,7 @@ MonoBehaviour:
   firing: 323
   reloading: 114
   fpsCam: {fileID: 961739752}
+  pickupTruck: {fileID: 0}
 --- !u!114 &1944108716
 MonoBehaviour:
   m_ObjectHideFlags: 0
