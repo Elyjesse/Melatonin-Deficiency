@@ -41,8 +41,8 @@ public class PickItUp : MonoBehaviour
                 print("raycast initialized");
                 if (rHit.transform.tag == "Interract")
                 {
-                    armsAbroad.holdingWeapons = rHit.transform.gameObject;
-                    holdingArms = true;
+                    //armsAbroad.holdingWeapons = rHit.transform.gameObject;
+                    //holdingArms = true;
 
                     if(armsAbroad.numberOfTheBeast <= armsAbroad.maxNumber)
                     {
