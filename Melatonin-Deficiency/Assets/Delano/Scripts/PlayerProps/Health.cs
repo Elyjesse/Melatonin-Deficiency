@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     //keybinds
     //if equipped the healing flask
     public KeyCode usingItems = KeyCode.Mouse2;
+    public GameObject playerOne;
 
     //properties
     public float health, maxHealth, healthRegen;
@@ -16,20 +17,9 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(usingItems))
+        if (health <= 0f)
         {
-            print("pressed the thing");
-            TakingDamage();
+            Destroy(playerOne);
         }
-    }
-
-    void TakingDamage()
-    {
-        
-    }
-
-    void Healing()
-    {
-
     }
 }

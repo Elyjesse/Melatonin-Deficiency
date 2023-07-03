@@ -48,13 +48,12 @@ public class UiProps : MonoBehaviour
             navigator.enabled = false;
             checkWithinRange = false;
         }
+
+        
         
         //alarming nearby ai
 
         distToComrades = Vector3.Distance(navigator.transform.position, navigator1.transform.position);
         //ui works in duos, only one can alarm their teammate
-
-
-        //shooting implemented next
     }
 }
