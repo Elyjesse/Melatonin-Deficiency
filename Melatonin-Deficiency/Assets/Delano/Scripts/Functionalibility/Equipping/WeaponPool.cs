@@ -6,6 +6,8 @@ public class WeaponPool : MonoBehaviour
     public int selectedWeapon;
     public int pastSelectedWeapon;
 
+    public Transform weaponPool;
+
     //enabling/disbling whenever gameobject is pickedUp
 
     //with pickitup in co-response
@@ -51,7 +53,7 @@ public class WeaponPool : MonoBehaviour
     void DetectWeapon()
     {
         index = 0;
-        foreach(Transform weapon in transform)
+        foreach(Transform weapon in weaponPool)
         {
             if(index == selectedWeapon)
             {
@@ -66,4 +68,8 @@ public class WeaponPool : MonoBehaviour
         }
     }
 
+    void SwitchingTeams()
+    {
+        print("switching teams up/down");
+    }
 }

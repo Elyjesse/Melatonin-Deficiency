@@ -21,14 +21,23 @@ public class KillingInTheName : MonoBehaviour
 
 
 
-    public void OnCollisionEnter(Collision coll)
+    public void OnTriggerEnter(Collider coll)
     {
-        DealingDamage();
+        if(coll.transform.tag == "Player")
+        {
+            print("has entered");
+            print(coll.transform.tag);
+            //get health script
+            healthOfPlayer = coll.gameObject.GetComponent<Health>();
+            print("health script recieved");    
+            DealingDamage();
+        }
     }
 
     void DealingDamage()
     {
         damageDealing -= healthOfPlayer.health;
+        print("dealingDamage");
     }
 
 }

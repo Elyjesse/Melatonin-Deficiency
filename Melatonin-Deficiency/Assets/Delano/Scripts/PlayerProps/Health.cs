@@ -7,13 +7,10 @@ using UnityEngine.Animations;
 public class Health : MonoBehaviour
 {
     //keybinds
-    //if equipped the healing flask
-    public KeyCode usingItems = KeyCode.Mouse2;
     public GameObject playerOne;
 
     //properties
-    public float health, maxHealth, healthRegen;
-    public float intervalOfHeal;
+    public float health;
 
     private void Update()
     {
