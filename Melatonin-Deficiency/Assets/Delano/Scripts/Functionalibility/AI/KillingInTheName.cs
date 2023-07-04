@@ -9,6 +9,7 @@ public class KillingInTheName : MonoBehaviour
     public Health healthOfPlayer;
 
     public float damageDealing;
+    public bool healthRecieved;
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class KillingInTheName : MonoBehaviour
             print(coll.transform.tag);
             //get health script
             healthOfPlayer = coll.gameObject.GetComponent<Health>();
-            print("health script recieved");    
+            print("health script recieved");
             DealingDamage();
         }
     }

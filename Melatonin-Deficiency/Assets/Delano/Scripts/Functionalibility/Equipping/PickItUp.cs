@@ -23,91 +23,91 @@ public class PickItUp : MonoBehaviour
 
     //properties
 
-    public  bool hisObjectActive;
+    public bool hisObjectActive;
     public float rangeOfPickup;
     public Vector3 currentAngle;
     public float throwForce, throwForceUp;
     public bool holdingArms;
     public bool hasDropped;
+    public bool checkOne;
 
     void Update()
     {
         if (Input.GetKeyDown(pickup))
         {
-            if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, rangeOfPickup))
+            if(hisObjectActive == false)
             {
-                gunRB = rHit.transform.gameObject.GetComponent<Rigidbody>();
-                coll = rHit.transform.gameObject.GetComponent<Collider>();
-                interactedGun = rHit.transform.gameObject;
-
-                if (rHit.transform.tag == "Interract")
+                checkOne = true;
+                if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, rangeOfPickup))
                 {
-                    rHit.transform.position = holdPos.transform.position;
-                    coll.isTrigger = true;
-                    interactedGun.isStatic = true;
-                    gunRB.isKinematic = true;
-                    gunRB.useGravity = false;
-                    currentAngle =new Vector3(-90, -15, -114);
-                    interactedGun.transform.eulerAngles = currentAngle;
-                    hisObjectActive = true;
+
+
+                    if (rHit.transform.tag == "Interract")
+                    {
+                        gunRB = rHit.transform.gameObject.GetComponent<Rigidbody>();
+                        rHit.transform.gameObject.GetComponent<Collider>().isTrigger = true;
+                        interactedGun = rHit.transform.gameObject;
+                        rHit.transform.SetParent(holdPos);
+                        rHit.transform.localPosition = Vector3.zero;
+                        rHit.transform.localEulerAngles = Vector3.zero;
+                        interactedGun.isStatic = true;
+                        gunRB.isKinematic = true;
+                        gunRB.useGravity = false;
+                        //interactedGun.transform.eulerAngles = currentAngle;
+
+                            //rHit.transform.SetParent(camPos.transform);
+                            //currentAngle = new Vector3(-71, 90, 25);
+                        checkOne = true;
+                    }
+
                 }
             }
         }
-        if(hisObjectActive == true)
+
+        if(hisObjectActive == false)
         {
-            rHit.transform.SetParent(camPos.transform);
-        }
-        else
-        {
-                    interactedGun.transform.SetParent(weaponPool.transform);
-                    print("parent set");
+            if(checkOne == false)
+            {
+                print("sending to the shadow realm");
+                SendToPool();
+                checkOne = true;
+            }
         }
 
         if (Input.GetKeyDown(drop))
         {
             DropThatNOW();
         }
-        
-    } 
-    /*
-    void PickItUpPls()
-    {
-        {
-            Debug.Log(rHit.collider.name);
 
-            rHit.transform.eulerAngles = camPos.transform.forward;
-            rHit.transform.position = holdPos.transform.position;
-            rHit.rigidbody.useGravity = false;
-            rHit.rigidbody.isKinematic = false;
-            rHit.collider.isTrigger = true;
-            hisObjectActive = true; 
-
-            
-        }
     }
-    */
     void DropThatNOW()
     {
         //rather than using rigidbodu, assign a gameO bject and link that to the gameObject hiot with raycast
-        print("dropping initialized");
-
-        rHit.rigidbody.useGravity = true;
-        rHit.rigidbody.isKinematic = true;
-        hisObjectActive= false;
-        rHit.collider.isTrigger = false;
-        hasDropped = true;
-        if(hasDropped == true)
-        {
-            print("definetively dropped");
-        }
-
-        //throw the gun
-
         gunRB = interactedGun.GetComponent<Rigidbody>();
 
 
         Vector3 forceToAdd = camPos.transform.forward * throwForce + transform.up * throwForceUp;
         gunRB.AddForce(forceToAdd, ForceMode.Impulse);
         interactedGun.transform.SetParent(null);
+        print("dropping initialized");
+
+        rHit.rigidbody.useGravity = true;
+        rHit.rigidbody.isKinematic = true;
+        hisObjectActive = false;
+        rHit.collider.isTrigger = false;
+        hasDropped = true;
+        checkOne = false;
+        if (hasDropped == true)
+        {
+            print("definetively dropped");
+        }
+
+        //throw the gun
+
+    }
+
+    void SendToPool()
+    {
+        interactedGun.transform.SetParent(weaponPool.transform);
     }
 }
