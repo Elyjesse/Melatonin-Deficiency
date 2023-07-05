@@ -40,7 +40,7 @@ public class PickItUp : MonoBehaviour
                 checkOne = true;
                 if (Physics.Raycast(camPos.transform.position, camPos.transform.forward, out rHit, rangeOfPickup))
                 {
-
+                    Debug.Log(rHit.transform.name);
 
                     if (rHit.transform.tag == "Interract")
                     {
@@ -53,11 +53,9 @@ public class PickItUp : MonoBehaviour
                         interactedGun.isStatic = true;
                         gunRB.isKinematic = true;
                         gunRB.useGravity = false;
-                        //interactedGun.transform.eulerAngles = currentAngle;
-
-                            //rHit.transform.SetParent(camPos.transform);
-                            //currentAngle = new Vector3(-71, 90, 25);
                         checkOne = true;
+
+                        interactedGun.transform.localEulerAngles = new Vector3(-90, 15, 55);
                     }
 
                 }
