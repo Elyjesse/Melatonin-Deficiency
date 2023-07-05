@@ -44,6 +44,7 @@ public class PickItUp : MonoBehaviour
 
                     if (rHit.transform.tag == "Interract")
                     {
+                        holdingArms = true;
                         gunRB = rHit.transform.gameObject.GetComponent<Rigidbody>();
                         rHit.transform.gameObject.GetComponent<Collider>().isTrigger = true;
                         interactedGun = rHit.transform.gameObject;
@@ -95,6 +96,7 @@ public class PickItUp : MonoBehaviour
         rHit.collider.isTrigger = false;
         hasDropped = true;
         checkOne = false;
+        holdingArms = false;
         if (hasDropped == true)
         {
             print("definetively dropped");
